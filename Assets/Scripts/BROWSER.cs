@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using UnityEditor;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Video;
 public class BROWSER : MonoBehaviour
 {
 
@@ -28,12 +28,12 @@ public class BROWSER : MonoBehaviour
     public GameObject orvelia1;
     public GameObject orvelia2;
     public GameObject orvelia3;
-    public GameObject orvelia4;
+    public GameObject orveliav1;
+    public GameObject orveliav2;
+    public GameObject orveliav3;
 
     public GameObject true1;
-    public GameObject true2;
-    public GameObject true3;
-
+    public GameObject truev1;
     public GameObject endflick;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -153,16 +153,16 @@ public class BROWSER : MonoBehaviour
     IEnumerator Orvelia()
     {
         orvelia1.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        orveliav1.GetComponent<VideoPlayer>().Play();
+        yield return new WaitForSeconds(6f);
         orvelia1.SetActive(false);
         orvelia2.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        orveliav2.GetComponent<VideoPlayer>().Play();
+        yield return new WaitForSeconds(6f);
         orvelia2.SetActive(false);
         orvelia3.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        orvelia3.SetActive(false);
-        orvelia4.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        orveliav3.GetComponent<VideoPlayer>().Play();
+        yield return new WaitForSeconds(10f);
         Application.Quit();
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
@@ -171,13 +171,8 @@ public class BROWSER : MonoBehaviour
     IEnumerator True()
     {
         true1.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        true1.SetActive(false);
-        true2.SetActive(true);
-        yield return new WaitForSeconds(4f);
-        true2.SetActive(false);
-        true3.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        truev1.GetComponent<VideoPlayer>().Play(); 
+        yield return new WaitForSeconds(15f);
         Application.Quit();
 #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
