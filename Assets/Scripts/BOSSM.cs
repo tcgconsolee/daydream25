@@ -160,7 +160,6 @@ public class BOSSM : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
-
     IEnumerator FileRain()
     {
         int waves = 3;
@@ -892,12 +891,12 @@ public class BOSSM : MonoBehaviour
             {
                 mode = 3;
                 sprite.transform.localScale = new Vector3(2.3f, 2.3f, 2.3f);
-            } 
+            } else
             if (bhit.collider != null && bhit.collider.name == "medium_0")
             {
                 mode = 2;
                 sprite.transform.localScale = new Vector3(3f, 3f, 3f);
-            } 
+            } else
             if (bhit.collider != null && bhit.collider.name == "hard_0")
             {
                 mode = 1;
