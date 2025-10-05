@@ -53,7 +53,7 @@ public class BOSSM : MonoBehaviour
     IEnumerator Start()
     {
         bosscut.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f);
         bosscut.SetActive(false);
         protection.isTrigger = true;
         spriteRb = sprite.GetComponent<Rigidbody2D>();

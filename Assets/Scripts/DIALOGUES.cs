@@ -12,6 +12,7 @@ public class DIALOGUES : MonoBehaviour
     public TMP_Text captions;
     public bool started = false;
     public static RaycastHit2D diahit;
+    private bool idle = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Update()
     {
@@ -51,76 +52,6 @@ public class DIALOGUES : MonoBehaviour
         yield return new WaitForSeconds(6f);
         captions.text = "";
 
-        bool idle = false;
-        for (float i = 15f; GameObject.Find("Window_notepad").transform.localScale.x < 0.5f; i -= 1f)
-        {
-            yield return new WaitForSeconds(1f);
-            if (!idle && i < 0f)
-            {
-                idle = true;
-                captions.text = "it should be like a.. Clipboard or some notebook type thing. Look user, you were supposed to be a skilled hacker.";
-                yield return new WaitForSeconds(4f);
-                captions.text = "";
-            }
-        }
-        captions.text = "YAY USE-";
-        yield return new WaitForSeconds(2f);
-        captions.text = "";
-        yield return new WaitForSeconds(2f);
-        captions.text = "Congratulations User! That’s the document Georje wanted me to give to you.";
-        yield return new WaitForSeconds(4f);
-        captions.text = "";
-        yield return new WaitForSeconds(2f);
-        captions.text = "he says its important... too important. Anyway!";
-        yield return new WaitForSeconds(4f);
-        captions.text = "";
-        yield return new WaitForSeconds(2f);
-        captions.text = "That file contains your mission briefing and your first clue. Try not to... uh... break anything while you explore it, okay?";
-        yield return new WaitForSeconds(5f);
-        captions.text = "";
-        idle = false;
-        bool idle2 = false;
-        for (float i = 30f; GameObject.Find("Window_video").transform.localScale.x < 0.5f; i -= 1f)
-        {
-            yield return new WaitForSeconds(1f);
-            if (!idle && i < 15f)
-            {
-                idle = true;
-                captions.text = "you know you should look at the capital letters in the readme once.";
-                yield return new WaitForSeconds(4f);
-                captions.text = "";
-            }
-            if (!idle2 && i < 0f)
-            {
-                idle2 = true;
-                captions.text = "Is it some popular abbreviation or something, I think i have heard it before user";
-                yield return new WaitForSeconds(4f);
-                captions.text = "";
-            }
-        }
-        captions.text = "Turn to the radio, USER";
-        yield return new WaitForSeconds(3f);
-        captions.text = "";
-        idle = false;
-        for (float i = 15f; !(GameObject.Find("VIDEO").GetComponent<VIDEO>().radio.text == "94.1"); i -= 1f)
-        {
-            yield return new WaitForSeconds(1f);
-            if (!idle && i < 0f)
-            {
-                idle = true;
-                captions.text = "What was the key user? Can you try entering it? As is? Something was capitalized I think.";
-                yield return new WaitForSeconds(4f);
-                captions.text = "";
-            }
-        }
-        yield return new WaitForSeconds(49f);
-        captions.text = "HOORAY-";
-        yield return new WaitForSeconds(2f);
-        captions.text = "";
-        yield return new WaitForSeconds(2f);
-        captions.text = "I mean, congratulations on obtaining the email. You do know what an email is right?";
-        yield return new WaitForSeconds(4f);
-        captions.text = "";
         idle = false;
         for (float i = 15f; !GameObject.Find("DESKTOP").GetComponent<DESKTOP>().mdone; i -= 1f)
         {
@@ -128,7 +59,7 @@ public class DIALOGUES : MonoBehaviour
             if (!idle && i < 0f)
             {
                 idle = true;
-                captions.text = "User… if you need hints for this… I don’t know how to help you.";
+                captions.text = "Usually there is a 'forgot password' option for user interface convinience.";
                 yield return new WaitForSeconds(4f);
                 captions.text = "";
             }
