@@ -137,7 +137,7 @@ public class BROWSER : MonoBehaviour
         endflick.transform.GetChild(0).gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         endflick.transform.GetChild(1).gameObject.SetActive(true);
-        endflick.transform.GetChild(1).GetComponent<TMP_Text>().text = endflick.transform.GetChild(1).GetComponent<TMP_Text>().text +WIN_USERNAME.GetWindowsUserName();
+        endflick.transform.GetChild(1).GetComponent<TMP_Text>().text = endflick.transform.GetChild(1).GetComponent<TMP_Text>().text +"User";
         yield return new WaitForSeconds(3f);
         endflick.transform.GetChild(2).gameObject.SetActive(true);
         yield return new WaitForSeconds(10f);

@@ -3,8 +3,8 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Collections;
-using System.IO;
-using System.Runtime.InteropServices;
+// using System.IO;
+// using System.Runtime.InteropServices;
 using TMPro;
 
 public class OPENING : MonoBehaviour
@@ -14,49 +14,49 @@ public class OPENING : MonoBehaviour
     public GameObject opencut;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "risk.txt");
-    private WIN_NOTIF wn_al;
+    // private string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "risk.txt");
+    // private WIN_NOTIF wn_al;
     private bool cutfinished = false;
     
     public AudioSource intro;
-    private bool IsRisky(WIN_NOTIF wn_al)
-    {
-        if (!File.Exists(filePath))
-        {
-            wn_al.TriggerAlert("RISK", "You're meddling with something you really shouldn't. But, if you're foolish, you can still proceed. Maybe check your desktop, you might find something...");
-            File.WriteAllText(filePath, "Are you SURE you're willing to take this risk? This is not your world afterall...\nType yes in the line below if you are.\nno");
-            return false;
-        }
+    // private bool IsRisky(WIN_NOTIF wn_al)
+    // {
+    //     if (!File.Exists(filePath))
+    //     {
+    //         wn_al.TriggerAlert("RISK", "You're meddling with something you really shouldn't. But, if you're foolish, you can still proceed. Maybe check your desktop, you might find something...");
+    //         File.WriteAllText(filePath, "Are you SURE you're willing to take this risk? This is not your world afterall...\nType yes in the line below if you are.\nno");
+    //         return false;
+    //     }
 
-        string[] lines = File.ReadLines(filePath).Take(3).ToArray();
-        if (lines.Length >= 3 && lines[2].ToLower().Contains("yes"))
-        {
-            return true;
-        }
+    //     string[] lines = File.ReadLines(filePath).Take(3).ToArray();
+    //     if (lines.Length >= 3 && lines[2].ToLower().Contains("yes"))
+    //     {
+    //         return true;
+    //     }
 
-        if (lines.Length >= 3 && (!(lines[2].ToLower().Contains("yes") || lines[2].ToLower().Contains("no"))))
-        {
-            // TODO: bossfight scene switching shenanigans
-        }
-        wn_al.TriggerAlert("RISK", "What? Still here?");
-        return false;
-    }
+    //     if (lines.Length >= 3 && (!(lines[2].ToLower().Contains("yes") || lines[2].ToLower().Contains("no"))))
+    //     {
+    //         // TODO: bossfight scene switching shenanigans
+    //     }
+    //     wn_al.TriggerAlert("RISK", "What? Still here?");
+    //     return false;
+    // }
     
     IEnumerator Start()
     {
-        wn_al = transform.parent.GetComponentInChildren<WIN_NOTIF>();
-        if(!IsRisky(wn_al))
-        {
-            // TODO: Toast alert code goes here
-            Application.Quit();
-            #if UNITY_EDITOR
-                EditorApplication.isPlaying = false;
-            #endif
-        }
+        // wn_al = transform.parent.GetComponentInChildren<WIN_NOTIF>();
+        // if(!IsRisky(wn_al))
+        // {
+        //     // TODO: Toast alert code goes here
+        //     Application.Quit();
+        //     #if UNITY_EDITOR
+        //         EditorApplication.isPlaying = false;
+        //     #endif
+        // }
         txt = GameObject.Find("grptext").GetComponent<Component>();
         txt.gameObject.SetActive(false);
         opencut.SetActive(true);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(24f);
         opencut.SetActive(false);
         txt.gameObject.SetActive(true);
         intro.Play();
