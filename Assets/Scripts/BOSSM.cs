@@ -16,6 +16,7 @@ public class BOSSM : MonoBehaviour
     private GameObject dragobj;
     private bool draggingobj = false;
     private bool dragging = false;
+    public int mode = 1;
     public BoxCollider2D top;
     private Vector2 movement;
     public GameObject sprite;
@@ -46,6 +47,9 @@ public class BOSSM : MonoBehaviour
     public GameObject endblack;
     public AudioSource ring;
     public GameObject bosscut;
+    public GameObject easy;
+    public GameObject medium;
+    public GameObject hard;
     IEnumerator Start()
     {
         bosscut.SetActive(true);
@@ -71,6 +75,9 @@ public class BOSSM : MonoBehaviour
             GameObject.Find("exitgame_0").transform.localScale = new Vector3(i, i, i);
             yield return new WaitForSeconds(0.1f);
         }
+        easy.AddComponent<BoxCollider2D>();
+        medium.AddComponent<BoxCollider2D>();
+        hard.AddComponent<BoxCollider2D>();
     }
 
     IEnumerator TimeStart()
@@ -788,20 +795,46 @@ public class BOSSM : MonoBehaviour
 
     void Update()
     {
-        if (timeLasted > 120)
+        if (mode == 1)
         {
-            if (!end)
+            if (timeLasted > 120)
             {
-                end = true;
-                StartCoroutine(Ending());  
+                if (!end)
+                {
+                    end = true;
+                    StartCoroutine(Ending());
+                }
+            }
+        }
+        else if (mode == 2)
+        {
+            if (timeLasted > 80)
+            {
+                if (!end)
+                {
+                    end = true;
+                    StartCoroutine(Ending());
+                }
+            }
+        }
+        else if (mode == 3)
+        {
+            if (timeLasted > 40)
+            {
+                if (!end)
+                {
+                    end = true;
+                    StartCoroutine(Ending());
+                }
             }
         }
         if (PlayerHealth <= 0 && !end)
-        {
-            end = true;
-            healthbars.SetActive(false);
-            fail.SetActive(true);
-        }
+            {
+                end = true;
+                healthbars.SetActive(false);
+                fail.SetActive(true);
+            }
+        Physics2D.SyncTransforms();
         if (Input.GetMouseButtonDown(0))
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current)
@@ -857,14 +890,17 @@ public class BOSSM : MonoBehaviour
             }
             if (bhit.collider != null && bhit.collider.name == "easy_0")
             {
-                sprite.transform.localScale = new Vector3(2f, 2f, 2f);
+                mode = 3;
+                sprite.transform.localScale = new Vector3(2.3f, 2.3f, 2.3f);
             } 
             if (bhit.collider != null && bhit.collider.name == "medium_0")
             {
+                mode = 2;
                 sprite.transform.localScale = new Vector3(3f, 3f, 3f);
             } 
             if (bhit.collider != null && bhit.collider.name == "hard_0")
             {
+                mode = 1;
                 sprite.transform.localScale = new Vector3(3.8f, 3.8f, 3.8f);
             } 
             if (bhit.collider != null && bhit.collider.name == "suspension_CROSS")
