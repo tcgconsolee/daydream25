@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "daydream25.sln"
+    "dotnet.defaultSolution": "cw25gdev.sln"
 }
